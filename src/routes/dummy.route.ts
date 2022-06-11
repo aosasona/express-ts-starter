@@ -2,10 +2,10 @@ import express, { Express, Request, Response, Router } from "express";
 const router: Router = express.Router();
 
 //Import Controller
-import { dummyController } from "../controllers/dummyController";
+import { dummyController } from "../controllers/dummy.controller";
 
 //Import middleware
-import { dummyMiddleware } from "../middlewares/dummyMiddleware";
+import { dummyMiddleware } from "../middlewares/dummy.middleware";
 
 router.get("/dummy", dummyMiddleware, dummyController);
 

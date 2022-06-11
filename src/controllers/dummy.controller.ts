@@ -1,6 +1,6 @@
 import { Request, Response, RequestHandler } from "express";
 import asyncHandler from "express-async-handler";
-import Dummy from "../models/dummyModel";
+import Dummy from "../models/dummy.model";
 
 export const dummyController: RequestHandler = asyncHandler(
   async (req: Request, res: Response): Promise<any> => {

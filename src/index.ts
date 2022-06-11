@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import connect from "./config/db";
+import helmet from "helmet";
 
 //PARSE ENV VARIABLES
 dotenv.config();
@@ -13,9 +14,12 @@ const app: Express = express();
 //APP MIDDLE-WARES
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+if (process.env.NODE_ENV === "production") {
+  app.use(helmet());
+}
 
 //APP ROUTES - IMPORT
-import dummyRoutes from "./routes/dummyRoutes";
+import dummyRoutes from "./routes/dummy.route";
 
 app.use("/", dummyRoutes);
 
