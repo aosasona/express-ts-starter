@@ -5,6 +5,9 @@ import cors from "cors";
 
 const app: Express = express();
 
+// Load environment variables from .env file
+require("dotenv").config();
+
 //APP MIDDLE-WARES
 // Middleware
 app.use(cors());

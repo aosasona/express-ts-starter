@@ -1,12 +1,8 @@
 import http from "http";
-import dotenv from "dotenv";
 import app from "./app";
 import { connect, disconnect } from "./services/db";
 import redisClient from "./utils/redis.util";
 const PORT: string | number = process.env.PORT || 8000;
-
-// Load environment variables from .env file
-dotenv.config();
 
 const server = http.createServer(app);
 
