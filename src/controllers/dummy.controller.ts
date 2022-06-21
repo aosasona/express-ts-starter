@@ -7,7 +7,7 @@ export const dummyController: RequestHandler = asyncHandler(
     try {
       const Test: any = await Dummy.find().select(["name", "-_id"]).lean();
 
-      return res.send(Test);
+      return res.status(200).send(Test);
     } catch (e: any) {
       return res.status(500).send(e.message);
     }

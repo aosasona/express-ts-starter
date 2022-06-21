@@ -7,6 +7,6 @@ import { dummyController } from "../controllers/dummy.controller";
 //Import middleware
 import { dummyMiddleware } from "../middlewares/dummy.middleware";
 
-router.get("/dummy", dummyMiddleware, dummyController);
+router.get("/", dummyMiddleware, dummyController);
 
 export default router;

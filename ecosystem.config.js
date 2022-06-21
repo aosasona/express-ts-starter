@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "express-ts-boilerplate",
-      script: "./dist/index.js",
+      script: "./dist/server.js",
       watch: "./dist",
     },
   ],
