@@ -1,4 +1,9 @@
 import http from "http";
+
+// Load environment variables from .env file
+require("dotenv").config();
+
+// Load express
 import app from "./app";
 import { connect, disconnect } from "./services/db";
 import redisClient from "./utils/redis.util";
