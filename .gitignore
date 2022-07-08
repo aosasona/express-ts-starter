@@ -3,4 +3,6 @@
 .env.local
 dist
 coverage
-__tests__
+# __tests__
+coverage
+yarn-error.log
