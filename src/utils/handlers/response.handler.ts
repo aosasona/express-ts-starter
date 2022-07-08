@@ -15,21 +15,31 @@ class CustomResponse {
   public success(
     message: string = "",
     data: any = {},
-    statusCode: number = 200
+    statusCode: number = 200,
+    meta: any = {}
   ) {
     return this.res.status(statusCode || 200).json({
-      error: false,
-      data,
+      success: true,
+      status: statusCode || 200,
       message,
+      data,
+      meta,
     });
   }
 
   // Send error response with status code and error message
-  public error(message: string = "", data: any = {}, statusCode: number = 500) {
+  public error(
+    message: string = "",
+    data: any = {},
+    statusCode: number = 500,
+    meta: any = {}
+  ) {
     return this.res.status(statusCode || 500).json({
-      error: true,
-      data,
+      success: false,
+      status: statusCode || 500,
       message,
+      data,
+      meta,
     });
   }
 }
