@@ -5,8 +5,14 @@ const router: Router = express.Router();
 import { dummyController } from "../controllers/dummy.controller";
 
 //Import middleware
-import { dummyMiddleware } from "../middlewares/dummy.middleware";
+import { logger } from "../middlewares/logger.middleware";
 
-router.get("/", dummyMiddleware, dummyController);
+router.get("/", dummyController);
+
+// logger({
+//     allowed: ["status", "host", "method", "protocol", "path"],
+//     log: process.env.NODE_ENV !== "production",
+//     // format: "[STATUS] [METHOD] [PATH] [TIME]",
+//   }),
 
 export default router;

@@ -7,6 +7,7 @@
 class CustomError extends Error {
   status: number;
   date: Date;
+  message: string;
 
   constructor(message: string = "", statusCode: number = 500) {
     super(message);

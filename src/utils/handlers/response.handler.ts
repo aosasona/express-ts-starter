@@ -6,9 +6,11 @@ import { Response } from "express";
 
 class CustomResponse {
   res: Response;
+  exception?: Error;
 
-  constructor(res: Response) {
+  constructor(res: Response, error?: Error) {
     this.res = res;
+    this.exception = error || new Error();
   }
 
   // Send success response with status code and data
@@ -36,8 +38,14 @@ class CustomResponse {
   ) {
     return this.res.status(statusCode || 500).json({
       success: false,
-      status: statusCode || 500,
-      message,
+      status:
+        this?.exception?.name.toLowerCase() === "customerror"
+          ? statusCode || 500
+          : 500,
+      message:
+        this?.exception?.name.toLowerCase() === "customerror"
+          ? message
+          : "Server error!",
       data,
       meta,
     });
