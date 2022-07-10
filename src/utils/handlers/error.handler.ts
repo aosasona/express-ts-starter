@@ -9,7 +9,7 @@ class CustomError extends Error {
   date: Date;
   message: string;
 
-  constructor(message: string = "", statusCode: number = 500) {
+  constructor(statusCode: number = 500, message: string = "") {
     super(message);
     this.name = "CustomError";
     this.status = statusCode || 500;
