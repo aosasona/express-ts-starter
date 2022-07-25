@@ -7,7 +7,7 @@ require("dotenv").config();
 import app from "./app";
 import { connect, disconnect } from "./services/db";
 import redisClient from "./utils/redis.util";
-const PORT: string | number = process.env.PORT || 8000;
+const PORT: string | number = process.env.PORT || 8080;
 
 const server = http.createServer(app);
 

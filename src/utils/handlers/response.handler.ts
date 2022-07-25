@@ -3,14 +3,15 @@
  */
 
 import { Response } from "express";
+import { ICustomException } from "../../interfaces/exception.interfaces";
 
 class CustomResponse {
   res: Response;
-  exception?: Error;
+  exception?: ICustomException;
 
-  constructor(res: Response, error?: Error) {
+  constructor(res: Response, err?: ICustomException) {
     this.res = res;
-    this.exception = error || new Error();
+    this.exception = err || new Error();
   }
 
   // Send success response with status code and data
@@ -22,7 +23,7 @@ class CustomResponse {
   ) {
     return this.res.status(statusCode || 200).json({
       success: true,
-      status: statusCode || 200,
+      code: statusCode || 200,
       message,
       data,
       meta,
@@ -38,13 +39,13 @@ class CustomResponse {
   ) {
     return this.res.status(statusCode || 500).json({
       success: false,
-      status:
-        this?.exception?.name.toLowerCase() === "customerror"
-          ? statusCode || 500
-          : 500,
+      code:
+        this?.exception?.name === "CustomException"
+          ? statusCode || this?.exception?.status || 500
+          : this?.exception?.status || 500,
       message:
-        this?.exception?.name.toLowerCase() === "customerror"
-          ? message
+        this?.exception?.name === "CustomException"
+          ? message || this?.exception?.message || "Something went wrong!"
           : "Server error!",
       data,
       meta,
